@@ -1,0 +1,275 @@
+import React from "react";
+
+// Single-file, framework-agnostic React component
+// Tailwind CSS classes are used for styling.
+// Drop this into any React project (e.g., Vite/Next) with Tailwind enabled.
+// Exported as default for easy import.
+
+const Section = ({ id, title, children }) => (
+  <section id={id} className="scroll-mt-24 py-12">
+    <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-6">{title}</h2>
+    {children}
+  </section>
+);
+
+const Stat = ({ label, value }) => (
+  <div className="bg-white/60 dark:bg-white/5 rounded-2xl p-4 shadow-sm border border-black/5">
+    <div className="text-2xl md:text-3xl font-bold leading-none">{value}</div>
+    <div className="text-sm opacity-70 mt-1">{label}</div>
+  </div>
+);
+
+const Pill = ({ children }) => (
+  <span className="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs md:text-sm bg-white/50 dark:bg-white/5">
+    {children}
+  </span>
+);
+
+const Row = ({ left, right }) => (
+  <div className="grid grid-cols-1 md:grid-cols-5 gap-3 md:gap-4 py-2 border-b border-black/5 last:border-0">
+    <div className="md:col-span-2 font-medium">{left}</div>
+    <div className="md:col-span-3 opacity-80">{right}</div>
+  </div>
+);
+
+const ListItem = ({ children }) => (
+  <li className="leading-relaxed pl-2">{children}</li>
+);
+
+export default function Portfolio() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-indigo-50 via-white to-white dark:from-gray-950 dark:via-gray-950 dark:to-gray-900 text-gray-900 dark:text-gray-100">
+      {/* Header / Nav */}
+      <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/70 dark:bg-gray-900/70 border-b border-black/10">
+        <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+          <a href="#home" className="font-bold tracking-tight text-lg md:text-xl">Dr. N. Junior Sundresh</a>
+          <nav className="hidden md:flex gap-4 text-sm">
+            <a href="#about" className="hover:opacity-80">About</a>
+            <a href="#qualifications" className="hover:opacity-80">Qualifications</a>
+            <a href="#experience" className="hover:opacity-80">Experience</a>
+            <a href="#publications" className="hover:opacity-80">Publications</a>
+            <a href="#books" className="hover:opacity-80">Books</a>
+            <a href="#awards" className="hover:opacity-80">Awards</a>
+            <a href="#contact" className="hover:opacity-80">Contact</a>
+          </nav>
+          <a href="#contact" className="md:hidden text-sm underline underline-offset-4">Contact</a>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <main id="home">
+        <section className="relative">
+          <div className="mx-auto max-w-6xl px-4 pt-14 pb-10 md:pb-14">
+            <div className="grid grid-cols-1 md:grid-cols-7 gap-8 items-center">
+              <div className="md:col-span-4">
+                <h1 className="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">
+                  Medical Superintendent & Professor of Surgery
+                </h1>
+                <p className="mt-4 text-base md:text-lg opacity-80">
+                  Government Medical College and Hospital, Cuddalore District, Annamalai Nagar – 608 002
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  <Pill>MS (General Surgery)</Pill>
+                  <Pill>FRCS</Pill>
+                  <Pill>FACS</Pill>
+                  <Pill>PhD</Pill>
+                </div>
+                <div className="mt-8 flex gap-3">
+                  <a href="#contact" className="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-medium bg-indigo-600 text-white shadow hover:bg-indigo-700">
+                    Get in touch
+                  </a>
+                  <a href="#qualifications" className="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-medium border border-black/10 bg-white/60 dark:bg-white/5 hover:bg-white">
+                    View qualifications
+                  </a>
+                </div>
+              </div>
+              <div className="md:col-span-3">
+                <div className="grid grid-cols-2 gap-3">
+                  <Stat label="UG Teaching" value="23 yrs" />
+                  <Stat label="PG Teaching" value="20 yrs" />
+                  <Stat label="Research Projects Guided" value="165" />
+                  <Stat label="Research Papers" value="154" />
+                </div>
+                <div className="mt-3 grid grid-cols-2 gap-3">
+                  <Stat label="Papers Presented" value="33" />
+                  <Stat label="Conferences Attended" value="189" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* About */}
+        <div className="mx-auto max-w-6xl px-4">
+          <Section id="about" title="About">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <Row left="Current Designation" right={<>
+                  Medical Superintendent & Professor of Surgery, Government Medical College and Hospital, Cuddalore District
+                </>} />
+                <Row left="Present Address" right={<>
+                  T2, Barani Apartment, Annamalai Nagar – 608 002
+                </>} />
+                <Row left="Correspondence Address" right={<>
+                  623, East Main Street, Thanjavur – 613 001, Tamil Nadu
+                </>} />
+              </div>
+              <div className="space-y-2">
+                <Row left="Mobile" right={<a href="tel:+919842312300" className="underline underline-offset-4">+91‑98423‑12300</a>} />
+                <Row left="Email" right={<a href="mailto:juniorsundresh@gmail.com" className="underline underline-offset-4">juniorsundresh@gmail.com</a>} />
+                <Row left="Date of Birth" right={<>30 July 1972</>} />
+              </div>
+            </div>
+          </Section>
+
+          {/* Qualifications */}
+          <Section id="qualifications" title="Qualifications">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white/70 dark:bg-white/5 rounded-2xl p-5 border border-black/10 shadow-sm">
+                <h3 className="text-xl font-semibold mb-3">Medical Qualifications</h3>
+                <div className="divide-y divide-black/5">
+                  {[
+                    {q:"MBBS", inst:"Rajah Muttiah Medical College, Annamalai University", yr:"2000"},
+                    {q:"MS (General Surgery)", inst:"Rajah Muttiah Medical College, Annamalai University", yr:"2005"},
+                    {q:"PhD (Medical Sciences)", inst:"CMJ University", yr:"2013"},
+                    {q:"P.G. Diploma in Hospital Management", inst:"DDE, Annamalai University", yr:"2004"},
+                    {q:"P.G.D.H.S. – Diabetology", inst:"DDE, Annamalai University", yr:"2005"},
+                    {q:"P.G.D.H.S. – Accident & Emergency Care", inst:"DDE, Annamalai University", yr:"2007"},
+                    {q:"Diploma in Minimal Access Surgery", inst:"Laparoscopy Hospital, New Delhi", yr:"2009"},
+                    {q:"Fellowship in Robotic Surgery (F.R.S.)", inst:"World Laparoscopic Hospital", yr:"2011"},
+                    {q:"University Diploma in Strasburg", inst:"European Association of Tele Surgery, France", yr:"2011"},
+                    {q:"F.I.A.G.E.S.", inst:"Indian Association of Gastro Endo Surgeons", yr:"2012"},
+                    {q:"F.I.M.S.A.", inst:"International Medical Science Academy", yr:"2013"},
+                    {q:"F.I.S.A.", inst:"Fellow of Indian Association of Surgeons", yr:"2013"},
+                    {q:"F.I.S.C.A.", inst:"International Science Congress Association", yr:"2013"},
+                    {q:"F.I.A.S.S.", inst:"Indian Academy of Social Sciences", yr:"2014"},
+                    {q:"F.I.C.S.", inst:"International College of Surgeons", yr:"2015"},
+                    {q:"F.A.L.S.", inst:"—", yr:"2018"},
+                    {q:"M.M.A.S.", inst:"Singhania University", yr:"2018"},
+                    {q:"FRCS", inst:"Royal College of Physicians and Surgeons, Glasgow", yr:"2019"},
+                    {q:"FACS", inst:"American College of Surgeons", yr:"2021"},
+                  ].map((item, i) => (
+                    <div key={i} className="grid grid-cols-5 gap-3 py-2">
+                      <div className="col-span-2 font-medium">{item.q}</div>
+                      <div className="col-span-2 opacity-80">{item.inst}</div>
+                      <div className="text-right">{item.yr}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-white/70 dark:bg-white/5 rounded-2xl p-5 border border-black/10 shadow-sm">
+                <h3 className="text-xl font-semibold mb-3">Non‑Medical / Interdisciplinary Qualifications</h3>
+                <div className="divide-y divide-black/5">
+                  {[
+                    {q:"M.A. Political Science", inst:"DDE, Annamalai University", yr:"2008"},
+                    {q:"MBA (Hospital Management)", inst:"DDE, Annamalai University", yr:"2011"},
+                    {q:"P.G. Diploma in Value‑Based Education", inst:"DDE, Annamalai University", yr:"2012"},
+                    {q:"P.G. Diploma in Yoga", inst:"DDE, Annamalai University", yr:"2012"},
+                    {q:"P.G. Diploma in Criminology & Forensic Science", inst:"DDE, Annamalai University", yr:"2020"},
+                    {q:"M.A. in Disaster Management", inst:"DDE, Annamalai University", yr:"2020"},
+                  ].map((item, i) => (
+                    <div key={i} className="grid grid-cols-5 gap-3 py-2">
+                      <div className="col-span-2 font-medium">{item.q}</div>
+                      <div className="col-span-2 opacity-80">{item.inst}</div>
+                      <div className="text-right">{item.yr}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Section>
+
+          {/* Experience & Metrics */}
+          <Section id="experience" title="Academic & Professional Experience">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Stat label="UG Teaching Experience" value="23 years" />
+              <Stat label="PG Teaching Experience" value="20 years" />
+              <Stat label="UG Examiner Since" value="2012" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+              <Stat label="PG Examiner Since" value="2019" />
+              <Stat label="Research Guide (Projects)" value="165" />
+              <Stat label="Articles in Tamil (Medicine)" value="301" />
+            </div>
+
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white/70 dark:bg-white/5 rounded-2xl p-5 border border-black/10 shadow-sm">
+                <h3 className="text-lg font-semibold mb-3">Research & Conferences</h3>
+                <ul className="list-disc ml-5 space-y-1 opacity-90">
+                  <ListItem>Research Papers Published: 154</ListItem>
+                  <ListItem>Papers Presented: 14 (International), 19 (National)</ListItem>
+                  <ListItem>Conferences Attended: 39 (International), 150 (National)</ListItem>
+                </ul>
+              </div>
+              <div className="bg-white/70 dark:bg-white/5 rounded-2xl p-5 border border-black/10 shadow-sm">
+                <h3 className="text-lg font-semibold mb-3">Books Authored in English</h3>
+                <ul className="list-disc ml-5 space-y-1 opacity-90">
+                  <ListItem>Practical Manual for Dental Students</ListItem>
+                  <ListItem>Surgical Guide to Dental Students</ListItem>
+                  <ListItem>Tamil translation of Bailey and Love’s Surgical Book (unpublished)</ListItem>
+                </ul>
+              </div>
+            </div>
+          </Section>
+
+          {/* Publications / Books */}
+          <Section id="publications" title="Books in Medicine (Tamil)">
+            <ul className="list-disc ml-5 space-y-1 opacity-90">
+              <ListItem><i>Ariya Thathuporutkal</i> (2021, NCBH)</ListItem>
+              <ListItem><i>Nenjerivu Muthal Vayitru Pun Varai</i> (2022, NCBH)</ListItem>
+              <ListItem><i>Appendicitis Muthal Molam Varai Maruthuvam</i> (2022, NCBH)</ListItem>
+              <ListItem><i>Pitthapai Kal Muthal Kanaya Veekam Varai Maruthuvam</i> (2022, NCBH)</ListItem>
+              <ListItem><i>Vaaipun Muthal Malachkkal Varai Maruthuvam</i> (2022, NCBH)</ListItem>
+              <ListItem><i>Unavu Kattupadindri Udal Barumanai Kuraikka Mudiyum</i> (2022, NCBH)</ListItem>
+              <ListItem><i>Serimaana Pathai Aruvai Maruthuvam</i> (Tamil University, Thanjavur, 2014)</ListItem>
+            </ul>
+          </Section>
+
+          <Section id="books" title="General Tamil Books">
+            <ul className="list-disc ml-5 space-y-1 opacity-90">
+              <ListItem><i>Kalaingarin Nagaichuvai</i> (2023)</ListItem>
+              <ListItem><i>Thillai Koothanin Thala Varalaru</i> (2010)</ListItem>
+              <ListItem><i>Lions Sangam – Oru Parvai</i> (Lions International)</ListItem>
+            </ul>
+          </Section>
+
+          {/* Awards */}
+          <Section id="awards" title="Awards & Recognition">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <Stat label="International Awards" value="3" />
+              <Stat label="National Awards" value="44" />
+              <Stat label="State Awards" value="2" />
+              <Stat label="Thamizh Chemmal Award" value="2023" />
+            </div>
+            <p className="opacity-80 mt-4">Thamizh Chemmal Award (Thanjavur District, 2023 – Govt. of Tamil Nadu)</p>
+          </Section>
+
+          {/* Contact */}
+          <Section id="contact" title="Contact">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <Row left="Email" right={<a href="mailto:juniorsundresh@gmail.com" className="underline underline-offset-4">juniorsundresh@gmail.com</a>} />
+                <Row left="Phone" right={<a href="tel:+919842312300" className="underline underline-offset-4">+91‑98423‑12300</a>} />
+              </div>
+              <div className="space-y-2">
+                <Row left="Correspondence" right={<>623, East Main Street, Thanjavur – 613 001, Tamil Nadu</>} />
+                <Row left="Present Address" right={<>T2, Barani Apartment, Annamalai Nagar – 608 002</>} />
+              </div>
+            </div>
+          </Section>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="mt-8 border-t border-black/10">
+        <div className="mx-auto max-w-6xl px-4 py-10 text-sm flex items-center justify-between gap-4">
+          <p>© {new Date().getFullYear()} Dr. N. Junior Sundresh. All rights reserved.</p>
+          <div className="flex gap-3">
+            <a href="#home" className="underline underline-offset-4">Back to top</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
